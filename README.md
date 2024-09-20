@@ -1,93 +1,62 @@
-# Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored
-
+# Implementation of Univariate Linear Regression
 ## AIM:
-To write a program to predict the marks scored by a student using the simple linear regression model.
+To implement univariate Linear Regression to fit a straight line using least squares.
 
 ## Equipments Required:
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
-## Algorithm:
-1. Import pandas, numpy and sklearn
-   
-2. Calculate the values for the training data set
-
-3. Calculate the values for the test data set
-
-4. Plot the graph for both the data sets and calculate for MAE, MSE and RMSE
+## Algorithm
+1. Get the independent variable X and dependent variable Y.
+2. Calculate the mean of the X -values and the mean of the Y -values.
+3. Find the slope m of the line of best fit using the formula. 
+<img width="231" alt="image" src="https://user-images.githubusercontent.com/93026020/192078527-b3b5ee3e-992f-46c4-865b-3b7ce4ac54ad.png">
+4. Compute the y -intercept of the line by using the formula:
+<img width="148" alt="image" src="https://user-images.githubusercontent.com/93026020/192078545-79d70b90-7e9d-4b85-9f8b-9d7548a4c5a4.png">
+5. Use the slope m and the y -intercept to form the equation of the line.
+6. Obtain the straight line equation Y=mX+b and plot the scatterplot.
 
 ## Program:
 ```
 /*
-Program to implement the simple linear regression model for predicting the marks scored.
+Program to implement univariate Linear Regression to fit a straight line using least squares.
 Developed by: VISHAL M.A
-RegisterNumber:  212222230177
+RegisterNumber:212222230177
+import numpy as np
+import matplotlib.pyplot as plt
+X=np.array(eval(input()))
+Y=np.array(eval(input()))
+X_mean=np.mean(X)
+
+Y_mean=np.mean(Y)
+num=0
+denum=0
+for i in range(len(X)):
+  num+=(X[i]-X_mean)*(Y[i]-Y_mean)
+  denum+=(X[i]-X_mean)**2
+m=num/denum
+print(X_mean)
+print(Y_mean)
+print(m)
+
+b=Y_mean - m*X_mean
+print(b)
+Y_pred=m*X+b
+print(Y_pred)
+plt.scatter(X,Y,color='blue')
+plt.plot(X,Y_pred,color='yellow') 
+plt.show()   
 */
 ```
 
-```
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import mean_absolute_error, mean_squared_error
-
-df=pd.read_csv("C:/classes/ML/ex 2/student_scores.csv")
-df.head()
-df.tail()
-X=df.iloc[:,:-1].values
-print("X = ",X)
-Y=df.iloc[:,-1].values
-print("Y = ",Y)
-
-from sklearn.model_selection import train_test_split
-X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=1/3,random_state=0)
-
-#splitting training and test data
-from sklearn.linear_model import LinearRegression
-regressor=LinearRegression()
-regressor.fit(X_train,Y_train)
-Y_pred=regressor.predict(X_test)
-print("Y_pred = ", Y_pred)
-print("Y_test = " , Y_test)
-
-#graph plot for training data
-plt.scatter(X_train,Y_train,color="orange")
-plt.plot(X_train,regressor.predict(X_train),color="red")
-plt.title("Hours vs scores(Training Set)")
-plt.xlabel("Hours")
-plt.ylabel("Scores")
-plt.show()
-
-#graph plot for test data
-plt.scatter(X_test,Y_test,color="orange")
-plt.plot(X_test,regressor.predict(X_test),color="red")
-plt.title("Hours vs scores(Test Data Set)")
-plt.xlabel("Hours")
-plt.ylabel("Scores")
-plt.show()
-
-
-mse=mean_squared_error(Y_test,Y_pred)
-print("MSE = ",mse)
-mae=mean_absolute_error(Y_test,Y_pred)
-print("MAE = ",mae)
-rmse=np.sqrt(mse)
-print("RMSE : ",rmse)
-
-```
-
 ## Output:
+![ml ex 1 out](https://github.com/user-attachments/assets/377dd92e-d91d-4574-9266-181bfc5e34ff)
 
-![image](https://github.com/Ashwinkumar-03/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/118663725/a8371842-e785-46fb-b183-a664ef54ec80)
 
-![image](https://github.com/Ashwinkumar-03/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/118663725/e5fb6c4d-1d89-4966-b0d9-86669a5275d2)
 
-![image](https://github.com/Ashwinkumar-03/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/118663725/776447ec-a658-42ac-a63a-5ffce9b188c8)
-
-![image](https://github.com/Ashwinkumar-03/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/118663725/14c14e77-6765-437e-9362-02177de58a3f)
 
 ## Result:
-Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
+Thus the univariate Linear Regression was implemented to fit a straight line using least squares using python programming.
 
 
 
