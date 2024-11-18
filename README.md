@@ -1,4 +1,5 @@
-# EX : 01 - Implementation of Univariate Linear Regression
+# EX 01 : Implementation of Univariate Linear Regression
+### Date : 9/08/24
 ## AIM:
 To implement univariate Linear Regression to fit a straight line using least squares.
 
