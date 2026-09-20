@@ -1,5 +1,4 @@
-# EX 01 : Implementation of Univariate Linear Regression
-### Date : 9/08/24
+# Implementation of Univariate Linear Regression
 ## AIM:
 To implement univariate Linear Regression to fit a straight line using least squares.
 
@@ -19,43 +18,48 @@ To implement univariate Linear Regression to fit a straight line using least squ
 
 ## Program:
 ```
+/*
 Program to implement univariate Linear Regression to fit a straight line using least squares.
-Developed by: VISHAL M.A
-RegisterNumber:212222230177
+
+*/
 import numpy as np
 import matplotlib.pyplot as plt
-X=np.array(eval(input()))
-Y=np.array(eval(input()))
-X_mean=np.mean(X)
 
-Y_mean=np.mean(Y)
-num=0
-denum=0
-for i in range(len(X)):
-  num+=(X[i]-X_mean)*(Y[i]-Y_mean)
-  denum+=(X[i]-X_mean)**2
-m=num/denum
-print(X_mean)
-print(Y_mean)
-print(m)
+x = np.array([1,2,3,4,5], dtype=float)
+y = np.array([2,4,5,4,5], dtype=float)
 
-b=Y_mean - m*X_mean
-print(b)
-Y_pred=m*X+b
-print(Y_pred)
-plt.scatter(X,Y,color='blue')
-plt.plot(X,Y_pred,color='yellow') 
-plt.show()   
-*/
+x_mean = np.mean(x)
+y_mean = np.mean(y)
+
+numerator = np.sum((x - x_mean) * (y - y_mean))
+denominator = np.sum((x - x_mean) ** 2)
+
+slope = numerator / denominator
+print("SLOPE :", slope)
+
+b = y_mean - slope * x_mean
+print("INTERCEPT :", b)
+
+y_pred = slope * x + b
+print("VALUE :", y_pred)
+
+new_x = float(input("Enter X value: "))
+yy = slope * new_x + b
+print("Predicted Y:", yy)
+
+plt.scatter(x, y, label="Data Points")
+plt.plot(x, y_pred, label="Best Fit Line")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.legend()
+plt.title("SIMPLE LINEAR REGRESSION")
+plt.show()
 ```
 
 ## Output:
-![ML EX 1 OUT](https://github.com/user-attachments/assets/85efa1bb-757c-4496-8477-2f9a67d4c643)
-
-![ML 1](https://github.com/user-attachments/assets/8e439e16-e197-4680-9ac1-65e04f73ed81)
-
-
-
+![best fit line](sam.png)
+<img width="632" height="192" alt="image" src="https://github.com/user-attachments/assets/2254dc36-3d29-4be6-846b-0a4cdf40dd69" />
+<img width="780" height="587" alt="image" src="https://github.com/user-attachments/assets/d409efb8-e6d8-4d90-9791-ff52bd036244" />
 
 
 ## Result:
